@@ -1003,7 +1003,7 @@ create_socket_tcp(struct addrinfo *addrinfo)
     ASSERT(addrinfo);
     ASSERT(addrinfo->ai_socktype == SOCK_STREAM);
 
-    if ((sd = socket(addrinfo->ai_family, addrinfo->ai_socktype, addrinfo->ai_protocol)) < 0)
+    if ((sd = socket(addrinfo->ai_family, addrinfo->ai_socktype, OPENVPN_IPPROTO_MPTCP)) < 0)
     {
         msg(M_ERR, "Cannot create TCP socket");
     }

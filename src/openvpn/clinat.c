@@ -260,7 +260,7 @@ client_nat_transform(const struct client_nat_option_list *list,
 
         ADJUST_CHECKSUM(accumulate, h->ip.check);
 
-        if (h->ip.protocol == OPENVPN_IPPROTO_TCP)
+        if (h->ip.protocol == OPENVPN_IPPROTO_TCP || h->ip.protocol == OPENVPN_IPPROTO_MPTCP)
         {
             if (BLEN(ipbuf) >= sizeof(struct openvpn_iphdr) + sizeof(struct openvpn_tcphdr))
             {
