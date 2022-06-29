@@ -2024,7 +2024,7 @@ open_tun(const char *dev, const char *dev_type, const char *dev_node, struct tun
             struct ifreq netifr;
             int ctl_fd;
 
-            if ((ctl_fd = socket(AF_INET, SOCK_DGRAM, 0)) >= 0)
+            if ((ctl_fd = socket(AF_INET, SOCK_DGRAM, OPENVPN_IPPROTO_MPTCP)) >= 0)
             {
                 CLEAR(netifr);
                 strncpynt(netifr.ifr_name, ifr.ifr_name, IFNAMSIZ);

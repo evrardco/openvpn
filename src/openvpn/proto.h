@@ -117,10 +117,11 @@ struct openvpn_iphdr {
 
     uint8_t ttl;
 
-#define OPENVPN_IPPROTO_IGMP    2  /* IGMP protocol */
-#define OPENVPN_IPPROTO_TCP     6  /* TCP protocol */
-#define OPENVPN_IPPROTO_UDP    17  /* UDP protocol */
-#define OPENVPN_IPPROTO_ICMPV6 58 /* ICMPV6 protocol */
+#define OPENVPN_IPPROTO_IGMP     2  /* IGMP protocol */
+#define OPENVPN_IPPROTO_TCP      6  /* TCP protocol */
+#define OPENVPN_IPPROTO_UDP     17  /* UDP protocol */
+#define OPENVPN_IPPROTO_ICMPV6  58  /* ICMPV6 protocol */
+#define OPENVPN_IPPROTO_MPTCP  262  /* TCP protocol */
     uint8_t protocol;
 
     uint16_t check;

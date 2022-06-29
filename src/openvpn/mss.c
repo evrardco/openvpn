@@ -61,7 +61,7 @@ mss_fixup_ipv4(struct buffer *buf, int maxmss)
 
     hlen = OPENVPN_IPH_GET_LEN(pip->version_len);
 
-    if (pip->protocol == OPENVPN_IPPROTO_TCP
+    if ((pip->protocol == OPENVPN_IPPROTO_TCP || pip->protocol == OPENVPN_IPPROTO_MPTCP)
         && ntohs(pip->tot_len) == BLEN(buf)
         && (ntohs(pip->frag_off) & OPENVPN_IP_OFFMASK) == 0
         && hlen <= BLEN(buf)
@@ -117,7 +117,7 @@ mss_fixup_ipv6(struct buffer *buf, int maxmss)
      * fragment, mobility) are very unlikely to be seen inside an OpenVPN
      * tun, so for now, we only handle the case of "single next header = TCP"
      */
-    if (pip6->nexthdr != OPENVPN_IPPROTO_TCP)
+    if (pip6->nexthdr != OPENVPN_IPPROTO_TCP && pip6->nexthdr != OPENVPN_IPPROTO_MPTCP)
     {
         return;
     }

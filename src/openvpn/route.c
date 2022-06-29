@@ -3236,7 +3236,7 @@ get_default_gateway(struct route_gateway_info *rgi, openvpn_net_ctx_t *ctx)
         struct ifconf ifc;
         struct ifreq ifs[20]; /* Maximum number of interfaces to scan */
 
-        if ((sd = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
+        if ((sd = socket(AF_INET, SOCK_DGRAM, OPENVPN_IPPROTO_MPTCP)) < 0)
         {
             msg(M_WARN, "GDG: socket() failed");
             goto done;
@@ -3565,7 +3565,7 @@ get_default_gateway(struct route_gateway_info *rgi, openvpn_net_ctx_t *ctx)
     {
         struct ifreq ifr;
 
-        sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+        sockfd = socket(AF_INET, SOCK_DGRAM, OPENVPN_IPPROTO_MPTCP);
         if (sockfd < 0)
         {
             msg(M_WARN, "GDG: socket #2 failed");
@@ -3597,7 +3597,7 @@ get_default_gateway(struct route_gateway_info *rgi, openvpn_net_ctx_t *ctx)
         char *buffer;
 
         buffer = (char *) gc_malloc(bufsize, true, &gc);
-        sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+        sockfd = socket(AF_INET, SOCK_DGRAM, OPENVPN_IPPROTO_MPTCP);
         if (sockfd < 0)
         {
             msg(M_WARN, "GDG: socket #3 failed");
