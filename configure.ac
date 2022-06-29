@@ -56,7 +56,7 @@ m4_define([serial_tests], [
 ])
 # This foreign option prevents autoreconf from overriding our COPYING and
 # INSTALL targets:
-AM_INIT_AUTOMAKE(foreign serial_tests 1.9) dnl NB: Do not [quote] this parameter.
+AM_INIT_AUTOMAKE(foreign serial_tests 1.9 [subdir-objects])
 AC_CANONICAL_HOST
 AC_USE_SYSTEM_EXTENSIONS
 
